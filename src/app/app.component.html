@@ -1,0 +1,188 @@
+<h1 class="bg-primary">hello</h1>
+
+<!-------------------------------------------ngIf---------------------------------------------------------->
+<h1>ngIf</h1>
+<div *ngIf="success_msg"> hello ngif</div>
+<div *ngIf="success_msg || success_flag"> hello ngif ||</div>
+<div *ngIf="success_msg && success_flag"> hello ngif &&</div>
+<div *ngIf="!success_msg"> hello ngif !</div>
+
+<!--<div *ngIf="success_msg; else error_msg">ngif else user added</div> 
+<ng-template #error_msg>ngif else user not added</ng-template>
+-->
+
+<div *ngIf="success_msg; then updated_msg ; else error_msg"></div> 
+<ng-template #updated_msg>ngif then else user  added</ng-template>
+<ng-template #error_msg>ngif then else user not added</ng-template>
+
+<!------------------------------------------ngFor--------------------------------------------->
+<h1>ngFor</h1>
+<ul>
+    <li *ngFor="let contact of contacts; index as i; first as f; last as l">
+        <div *ngIf='f'>this is first record: </div>
+        <div>
+            {{i}} {{contact.firstName}} {{contact.lastName}}
+        </div>
+        <div *ngIf="l">this is last message </div>
+    
+    </li>
+</ul> <br>
+
+<ul>
+    <li *ngFor="let contact of contacts; index as i; even as f; odd as l">
+        
+       <div *ngIf="f" style="background-color: aquamarine;">
+        {{i}} {{contact.firstName}} {{contact.lastName}}
+       </div>
+
+       <div *ngIf="l" style="background-color: rgb(230, 11, 11);">
+        {{i}} {{contact.firstName}} {{contact.lastName}}
+       </div>
+        
+    </li>
+</ul>
+<!-----------------------------------------ngSwitch------------------------------------->
+<h1>ngSwitch</h1> 
+
+<div [ngSwitch]="superPower">
+    <div *ngSwitchCase="'wonderWoman'">Display wonder woman super powers</div>
+    <div *ngSwitchCase="'superMan'">Display super man super powers</div>
+    <div *ngSwitchCase="'heMan'">Display he man super powers</div>
+    <div *ngSwitchCase="'spiderMan'">Display spider man super powers</div>
+</div> <br>
+
+<div [ngSwitch]="category">
+    <div *ngSwitchCase="'clothing'">Display wonder woman super powers</div>
+    <div *ngSwitchCase="'mobiles'">category is mobiles</div>
+    <div *ngSwitchCase="'kitchen'">Display he man super powers</div>
+    <div *ngSwitchCase="'furniture'">Display spider man super powers</div>
+</div> <br>
+ 
+<div [ngSwitch]="tax">
+    <div *ngSwitchCase="10">tax is 10</div>
+    <div *ngSwitchCase="'superMan'">Display super man super powers</div>
+    <div *ngSwitchCase="'heMan'">Display he man super powers</div>
+    <div *ngSwitchCase="'spiderMan'">Display spider man super powers</div>
+    <div *ngSwitchDefault>no tax amount</div>
+</div> <br>
+<!-------------------------------------ngStyle---------------------------------------------->
+<h1>ngStyle</h1>
+<div [ngStyle]="{'background-color':'blue','color':'white'}"> This is blue div</div>
+<div [ngStyle]="{'background-color':styleProp}">dynamic property value from component</div>
+<div [ngStyle]="{'color':txtColor==='red'? 'yellow': 'green'}">conditional div</div><!--if text color equal to red then set it to yellow  or else set it to green-->
+
+<!------------------------------------------ngClass---------------------------------------->
+<h1>ngClass</h1>
+<div [ngClass]="'c1'">this is ngclass</div> <br>
+<div [ngClass]="'c1 c2'">this is ngclass multiple class example</div> <br> 
+<div [ngClass]="stylePropClass">this is ngclass using dynamic variable classes</div> <br>
+<div [ngClass]="conditionClsProp==='c2'? 'c3' : 'c1'">this is ngclass using condition check</div> <br>
+<p>this is through object</p>
+<div [ngClass]="{c1: true, c2:false}">this is ngclass using object</div> <br>
+<div [ngClass]="getClassName()">this is ngclass usng method</div> <br>
+
+<!-----------------------------------------data binding-------------------------------------->
+<!----------------------------------------one way data binding------------------------------->
+<h1>one way data binding</h1>
+<h1>{{page_heading}}</h1>
+
+<div>{{data_object.firstName}} {{data_object.lastName}}</div>
+<br>
+<div *ngIf="isUserLoggedIn">
+    {{data_object.firstName}} {{data_object.lastName}}
+</div>
+<br>
+<div *ngFor="let contact of contacts">
+     {{contact.firstName}} {{contact.lastName}} {{contact.contactID}}
+</div>
+
+<table>
+    <tr>
+      <th>ContactId</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+    </tr>
+    <tr *ngFor="let contact of contacts">
+        <td>{{contact.contactID}}</td>
+        <td>{{contact.firstName}}</td>
+        <td>{{contact.lastName}}</td>
+    </tr>
+</table>
+
+<!--------------------------------------------property binding------------------------------->
+<h1>property binding</h1>
+<p>bind any html property of dom elements</p>
+<h1 [style.color]="txtColVal">{{page_heading}}</h1>
+
+<a href="#"></a>
+
+<div *ngIf="isUserLoggedIn">
+    <div [innerHTML]="data_object.firstName"></div> <!--innerHTML push that data into inside div-->
+</div> <br>
+
+<table>
+    <tr>
+      <th>ContactId</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+    </tr>
+    <tr *ngFor="let contact of contacts">
+        <td [title]="contact.contactID">{{contact.contactID}}</td> <!--placing curser on dom element will show value-->
+        <td>{{contact.firstName}}</td>
+        <td>{{contact.lastName}}</td>
+    </tr>
+</table>
+
+<img [src]="imgUrl" [alt]="imgAlt">
+
+<!-------------------------------------------Attribute binding------------------------------>
+
+<table>
+    <tr>
+        <td>contact ID</td>
+        <td>first name</td>
+        <td>last name </td>
+    </tr>
+    <tr>
+        <td [attr.colspan]="colSpan">contact ID</td>
+        <td>first name</td>
+        <td>last name </td>
+    </tr>
+</table>
+
+<!----------------------------------------------event binding------------------------------>
+<h1>event binding</h1>
+ <button (click)="sayHello()">click</button>
+
+<div (mouseover)="highlightBGcolor(1,2,3)">Highlight me please</div>
+
+<input type="text" (focus)="inputBox()">
+
+<!--------------------------------------------two way data binding----------------------------->
+<br>
+<h1>two way data binding</h1>
+<input type=" text" [(ngModel)]="username">
+
+{{username}}
+
+
+<div *ngIf="month<10">{{username}}</div>
+
+<!-------------------------------------------------pipes------------------------------------>
+<br>
+<h1>pipes</h1>
+
+
+
+
+<!-------------------------------------------------Routing----------------------------------->
+<h1>routing</h1>
+
+
+
+
+
+<router-outlet></router-outlet> <!--primary router outlet-->
+<!--<router-outlet name="addLoan"></router-outlet> named router outlet-->
+<!--<router-outlet name="editLoan"></router-outlet>-->
+

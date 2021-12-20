@@ -1,0 +1,48 @@
+<p>loans-types works!</p>
+ <form [formGroup]="addLoanTypesForm">
+
+    <div class="form-group">
+        <label>Loan Name</label>
+    <input type="text" formControlName="loanName" (keyup)="trackLoanName()"> <!--onblur or keyup reactive forms value changes & state changes-->
+    <span class="text-danger" *ngIf="addLoanTypesForm.get('loanName')?.hasError('required') && addLoanTypesForm.get('loanName')?.touched">loan name is required</span>
+    <span class="text-danger" *ngIf="addLoanTypesForm.get('loanName')?.hasError('minlength') && addLoanTypesForm.get('loanName')?.touched">loan name should be min of 10 char</span>
+    <span class="text-danger" *ngIf="addLoanTypesForm.get('loanName')?.hasError('maxlength') && addLoanTypesForm.get('loanName')?.touched">loan name should be max of 20 char</span>
+     </div>
+    
+    <div class="form-group">
+        <LABEL>Loan Type</LABEL>
+    <input type="text" formControlName="loanType">
+    </div>
+    
+    <div class="form-group">
+        <label>loan description</label>
+
+    <textarea formControlName="loanDescription"></textarea>
+    </div>
+   <!-- <div class="form-group" formArrayName="users"> <--creating form control inside form array
+        <label>users</label>
+        <div *ngFor="let control of addLoanTypesForm.controls.users['controls']; let i = index">
+            <input type="text" [formControlName]="i">
+        </div>
+    </div>-->
+
+    <div class="form-group" formArrayName="users"> <!--creating form group inside form array-->
+        <label>users</label>
+        <div *ngFor="let control of addLoanTypesForm.controls.users['controls']; let i = index;" [formGroupName]="i">
+            <input type="text" formControlName="name">
+            <input type="text" formControlName="age" (blur)="assignDept(i)"> <!--//assigning dept based on age-->
+            <input type="text" formControlName="dept">
+            <button (click)="removeUser(i)">remove user</button>
+        </div>
+    </div>
+   
+
+    <button (click)="addLoanType()" [disabled]="!addLoanTypesForm.valid">Add Loan Types</button>
+
+    <button class="btn btn-link" (click)="settingValues()">set values</button>
+    <button class="btn btn-link" (click)="resetForm()">reset</button>
+
+     <button (click)="addUser()">Add new user</button> 
+
+
+ </form>

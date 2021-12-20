@@ -1,0 +1,18 @@
+<hr>
+<div *ngIf="isUserCreated" class="bg-success">User added successfully</div>
+<h1>Angular forms-Template driven forms</h1>
+<form #addCustomerForm="ngForm" (submit)="addCustomer(addCustomerForm)">
+    <input type="text" [(ngModel)]="firstname" name="firstname" required minlength='10'> <br>
+   
+    <input type="checkbox" [(ngModel)]="terms" name="terms" required> <br>
+    <select [(ngModel)]="customerType" name="customerType" required>
+        <option value="1">premium</option>
+        <option value="2">standard </option>
+    </select>
+    <br>
+    <textarea [(ngModel)]="description" name="description" id="" cols="30" rows="10"></textarea> <br>
+    <button type="submit" [disabled]="!addCustomerForm.valid">Add Customer</button>
+    <button class="btn btn-link" (click)="resetForm(addCustomerForm)">reset</button>
+    <button class="btn btn-link" (click)="settingValues(addCustomerForm)">set values</button>
+</form>
+<div>{{firstname}}</div>
