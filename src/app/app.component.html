@@ -175,14 +175,22 @@
 
 
 
-<!-------------------------------------------------Routing----------------------------------->
+<!-------------------------------------------------Content Projection----------------------------------->
+
+<app-content-projection> <!--ng-content project-->
+    this is from the app component <!--sinle content projection-->
+    <p role>this is slected content for roles</p> <!--multi content projection-->
+    <ng-template #admin>this is for admin content</ng-template><!--conditional content projecton-->
+</app-content-projection>
+
+
+
 <h1>routing</h1>
 
-
+<!-----------------------------------------------Angular serolve------------------------------------>
 
 
 
 <router-outlet></router-outlet> <!--primary router outlet-->
 <!--<router-outlet name="addLoan"></router-outlet> named router outlet-->
 <!--<router-outlet name="editLoan"></router-outlet>-->
-

@@ -1,0 +1,13 @@
+<p>user-list works!</p>
+<ng-container *ngIf="users$ | async as users">
+    <div *ngFor="let user of users">
+        <div style="flex-grow:1;">
+            <p>{{user.id}}</p>
+            <h5>{{user.name}}</h5>
+            <p>{{user.email}}</p>
+
+        </div>
+        <a mat-stroked-button [routerLink]="['user',user.id]">details</a> 
+    </div>
+
+</ng-container>

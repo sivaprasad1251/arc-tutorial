@@ -21,6 +21,14 @@ import { AdminManageComponent } from './admin-manage/admin-manage.component';
 import { PracticeComponent } from './practice/practice.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ComonInterceptor } from './comon.interceptor';
+import { DomManipulationComponent } from './dom-manipulation/dom-manipulation.component';
+import { ContentProjectionComponent } from './content-projection/content-projection.component';
+import { ListComponent } from './list/list.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserModule } from './user/user.module';
+import {MatButtonModule} from '@angular/material/button';
+
+ 
 
 
 //import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -43,6 +51,10 @@ import { ComonInterceptor } from './comon.interceptor';
     AdminDeleteComponent,
     AdminManageComponent,
     PracticeComponent,
+    DomManipulationComponent,
+    ContentProjectionComponent,
+    ListComponent,
+    
     
   ],
   imports: [
@@ -52,6 +64,9 @@ import { ComonInterceptor } from './comon.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule,
+    UserModule,
+    MatButtonModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass : ComonInterceptor, multi: true}, //interceptors 

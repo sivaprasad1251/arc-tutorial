@@ -19,6 +19,7 @@ export class AccountInfoGuard implements Resolve<any> {
    userName:'siva'
  };
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return this.userObj;
     
   }
   

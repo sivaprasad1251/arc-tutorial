@@ -1,0 +1,9 @@
+<p>content-projection works!</p>
+<ng-content></ng-content> <!--sinle content projection-->
+
+<ng-content select="[role]"></ng-content><!--multi content projection-->
+   <!--conditional content projecton-->
+   <div *ngIf="adminTemplate">
+       <template [ngTemplateOutlet]="adminTemplate"></template>
+
+   </div>

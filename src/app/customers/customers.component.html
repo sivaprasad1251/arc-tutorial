@@ -1,5 +1,12 @@
 <p>customers works!</p>
-
-<ul *ngFor="let user of users">
+<!-- <ul *ngFor="let user of users">
     <li>{{user | json}}</li>
-</ul>
+</ul>-->
+
+<a routerLink="add">Add customer</a> <br>
+<a routerLink="edit">edit customer</a> <br>
+<a routerLink="delete">delete customer</a> <br>
+<a routerLink="add-user">Add user</a>
+
+
+<router-outlet></router-outlet>
